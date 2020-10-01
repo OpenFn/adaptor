@@ -1,13 +1,14 @@
-Language Template [![Build Status](https://travis-ci.org/OpenFn/language-template.svg?branch=master)](https://travis-ci.org/OpenFn/language-template)
-=================
+# Language Template [![Build Status](https://travis-ci.org/OpenFn/language-template.svg?branch=master)](https://travis-ci.org/OpenFn/language-template)
 
-Language Pack for building expressions and operations to interact with the [TEMPLATE] API.
+Language Pack for building expressions and operations to interact with the
+[TEMPLATE] API.
 
-Documentation
--------------
+## Documentation
+
 ## post
 
 #### sample configuration
+
 ```json
 {
   "username": "taylor@openfn.org",
@@ -16,6 +17,7 @@ Documentation
 ```
 
 #### sample expression using operation
+
 ```js
 post({
   "url": "api/v1/forms/data/wide/json/formId",
@@ -24,10 +26,7 @@ post({
 })
 ```
 
-[Docs](docs/index)
-
-Development
------------
+## Development
 
 Clone the repo, run `npm install`.
 
