@@ -1,6 +1,11 @@
-import { execute as commonExecute, expandReferences } from 'language-common';
-import request from 'request';
+import {
+  execute as commonExecute,
+  composeNextState,
+  expandReferences,
+} from 'language-common';
+import axios from 'axios';
 import { resolve as resolveUrl } from 'url';
+import { resolve } from 'path';
 
 /** @module Adaptor */
 
@@ -40,53 +45,40 @@ export function execute(...operations) {
  * @param {object} params - data to make the fetch
  * @returns {Operation}
  */
-export function post(params) {
+export function post(params, callback) {
   return state => {
-    function assembleError({ response, error }) {
-      if (response && [200, 201, 202].indexOf(response.statusCode) > -1)
-        return false;
-      if (error) return error;
-      return new Error(`Server responded with ${response.statusCode}`);
-    }
-
+    const { baseUrl, username, password } = state.configuration;
     const { url, body, headers } = expandReferences(params)(state);
 
-    return new Promise((resolve, reject) => {
-      console.log('Request body:');
-      console.log('\n' + JSON.stringify(body, null, 4) + '\n');
-      request.post(
-        {
-          url: url,
-          json: body,
-          headers,
-        },
-        function (error, response, body) {
-          error = assembleError({ error, response });
-          if (error) {
-            reject(error);
-            console.log(response);
-          } else {
-            console.log('Printing response...\n');
-            console.log(JSON.stringify(response, null, 4) + '\n');
-            console.log('POST succeeded.');
-            resolve(body);
-          }
-        }
-      );
-    }).then(data => {
-      const nextState = {
-        ...state,
-        response: {
-          body: data,
-        },
-      };
-      return nextState;
-    });
+    return axios({
+      method: 'post',
+      headers: {},
+      params: {},
+      baseURL,
+      url,
+      data: body,
+      auth: { username, password },
+    })
+      .then(response => {
+        console.log(
+          'Printing response...\n',
+          JSON.stringify(response, null, 4) + '\n',
+          'POST succeeded.'
+        );
+
+        const nextState = composeNextState(state, response);
+        if (callback) resolve(callback(nextState));
+        resolve(nextState);
+      })
+      .catch(error => {
+        console.log(error);
+        reject(error);
+      });
   };
 }
 
-// Note that we expose the entire npm request package to the user here.
-exports.request = request;
+// Note that we expose the entire axios package to the user here.
+exports.axios = axios;
 
 // What functions do you want from the common adaptor?
 export {
