@@ -14,22 +14,21 @@
     "lib/"
   ],
   "dependencies": {
-    "language-common": "github:openfn/language-common#v0.0.5",
+    "language-common": "github:openfn/language-common#v0.3.0",
     "request": "^2.81.0"
   },
   "devDependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.9.0",
+    "@babel/plugin-proposal-function-bind": "^7.8.3",
+    "@babel/preset-env": "^7.9.5",
+    "@babel/preset-stage-0": "^7.8.3",
+    "@babel/register": "^7.9.0",
     "assertion-error": "^1.0.1",
-    "babel": "^6.0.15",
-    "babel-cli": "^6.1.2",
-    "babel-core": "^6.1.2",
-    "babel-preset-es2015": "^6.1.2",
-    "babel-preset-stage-0": "^6.3.13",
     "chai": "^3.4.0",
     "deep-eql": "^0.1.3",
-    "esdoc": "^0.5.2",
-    "esdoc-es7-plugin": "0.0.3",
-    "mocha": "^2.3.3",
-    "nock": "^8.0.0",
+    "mocha": "^7.1.1",
+    "nock": "^12.0.3",
     "sinon": "^1.17.2"
   }
 }
