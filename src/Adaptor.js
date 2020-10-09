@@ -1,12 +1,11 @@
 /** @module Adaptor */
-
 import {
   execute as commonExecute,
   composeNextState,
   expandReferences,
 } from 'language-common';
 import axios from 'axios';
-import { resolve as resolveUrl } from 'url';
+import { assembleError, tryJson } from './Utils';
 import { resolve } from 'path';
 
 /**
@@ -71,6 +70,7 @@ export function post(params, callback) {
         resolve(nextState);
       })
       .catch(error => {
+        error = assembleError({ error, response, params });
         console.log(error);
         reject(error);
       });
@@ -78,7 +78,7 @@ export function post(params, callback) {
 }
 
 // Note that we expose the entire axios package to the user here.
-exports.axios = axios;
+// exports.axios = axios;
 
 // What functions do you want from the common adaptor?
 export {
