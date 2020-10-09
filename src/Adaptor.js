@@ -1,3 +1,5 @@
+/** @module Adaptor */
+
 import {
   execute as commonExecute,
   composeNextState,
@@ -6,8 +8,6 @@ import {
 import axios from 'axios';
 import { resolve as resolveUrl } from 'url';
 import { resolve } from 'path';
-
-/** @module Adaptor */
 
 /**
  * Execute a sequence of operations.
