@@ -35,6 +35,7 @@ export function execute(...operations) {
 
 /**
  * Make a POST request
+ * @public
  * @example
  * execute(
  *   post(params)
