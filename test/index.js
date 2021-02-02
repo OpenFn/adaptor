@@ -46,6 +46,12 @@ describe('create', () => {
       .reply(200, (uri, requestBody) => {
         return { ...requestBody, fullName: 'Mamadou', gender: 'M' };
       });
+
+    nock('https://fake.server.com')
+      .post('/api/noAccess')
+      .reply(404, (uri, requestBody) => {
+        return { detail: 'Not found.' };
+      });
   });
 
   it('makes a post request to the right endpoint', async () => {
@@ -72,5 +78,23 @@ describe('create', () => {
       fullName: 'Mamadou',
       gender: 'M',
     });
+  });
+
+  it('throws an error for a 404', async () => {
+    const state = {
+      configuration: {
+        baseUrl: 'https://fake.server.com',
+        username: 'hello',
+        password: 'there',
+      },
+    };
+
+    const error = await execute(create('api/noAccess', { name: 'taylor' }))(
+      state
+    ).catch(error => {
+      return error;
+    });
+
+    expect(error.message).to.eql('Request failed with status code 404');
   });
 });
