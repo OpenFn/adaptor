@@ -2,7 +2,7 @@ import { expect } from 'chai';
 import nock, { back } from 'nock';
 import ClientFixtures, { fixtures } from './ClientFixtures';
 
-import Adaptor from '../src';
+import Adaptor from '../lib';
 const { execute, create, dataValue } = Adaptor;
 
 describe('execute', () => {
@@ -52,6 +52,12 @@ describe('create', () => {
       .reply(404, (uri, requestBody) => {
         return { detail: 'Not found.' };
       });
+
+    nock('https://fake.server.com')
+      .post('/api/differentError')
+      .reply(500, (uri, requestBody) => {
+        return { body: 'Other error.' };
+      });
   });
 
   it('makes a post request to the right endpoint', async () => {
@@ -96,5 +102,23 @@ describe('create', () => {
     });
 
     expect(error.message).to.eql('Request failed with status code 404');
+  });
+
+  it('handles and throws different kinds of errors', async () => {
+    const state = {
+      configuration: {
+        baseUrl: 'https://fake.server.com',
+        username: 'hello',
+        password: 'there',
+      },
+    };
+
+    const error = await execute(create('api/differentError', { name: 'taylor' }))(
+      state
+    ).catch(error => {
+      return error;
+    });
+
+    expect(error.message).to.eql('Request failed with status code 500');
   });
 });
