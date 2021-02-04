@@ -74,6 +74,44 @@ export function create(path, params, callback) {
   };
 }
 
+/**
+ * Creates some resource in a connected system to a known endpoint
+ * @public
+ * @example
+ * createPatient({"foo": "bar"})
+ * @constructor
+ * @param {object} params - data to create the new resource
+ * @param {function} callback - (Optional) callback function
+ * @returns {Operation}
+ */
+export function createPatient(params, callback) {
+  return state => {
+    params = expandReferences(params)(state);
+
+    const { baseUrl, username, password } = state.configuration;
+
+    const url = `${baseUrl}/patient`;
+    const auth = { username, password };
+
+    const config = {
+      url,
+      body: params,
+      auth,
+    };
+
+    return http
+      .post(config)(state)
+      .then(response => {
+        const nextState = {
+          ...composeNextState(state, response.data),
+          response,
+        };
+        if (callback) return callback(nextState);
+        return nextState;
+      });
+  };
+}
+
 // What functions do you want from the common adaptor?
 export {
   alterState,

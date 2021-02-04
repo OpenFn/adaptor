@@ -120,3 +120,40 @@ describe('create', () => {
     expect(error.message).to.eql('Request failed with status code 500');
   });
 });
+
+describe('createPatient', () => {
+  before(() => {
+    nock('https://fakepatient.server.com')
+      .post('/api/patients')
+      .reply(200, (uri, requestBody) => {
+        return { ...requestBody, fullName: 'Mamadou', gender: 'M' };
+      });
+  });
+
+  it('makes a post request to the patient endpoint', async () => {
+    const state = {
+      configuration: {
+        baseUrl: 'https://fakepatient.server.com',
+        username: 'hello',
+        password: 'there',
+      },
+      data: {
+        fullName: 'Mamadou',
+        gender: 'M',
+      },
+    };
+
+    const finalState = await execute(
+      create('api/patients', {
+        name: dataValue('fullName')(state),
+        gender: dataValue('gender')(state),
+      })
+    )(state);
+
+    expect(finalState.data).to.eql({
+      fullName: 'Mamadou',
+      gender: 'M',
+    });
+  });
+
+});
