@@ -100,7 +100,6 @@ describe('create', () => {
     ).catch(error => {
       return error;
     });
-
     expect(error.message).to.eql('Request failed with status code 404');
   });
 
@@ -113,12 +112,11 @@ describe('create', () => {
       },
     };
 
-    const error = await execute(create('api/differentError', { name: 'taylor' }))(
-      state
-    ).catch(error => {
+    const error = await execute(
+      create('api/differentError', { name: 'taylor' })
+    )(state).catch(error => {
       return error;
     });
-
     expect(error.message).to.eql('Request failed with status code 500');
   });
 });
