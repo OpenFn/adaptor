@@ -1,18 +1,23 @@
 {
   "name": "language-template",
-  "version": "1.0.0",
+  "version": "1.0.2-21",
   "description": "An Language Package Template for OpenFn",
   "main": "lib/index.js",
   "scripts": {
     "build": "make",
     "test": "mocha --require @babel/register",
-    "test:watch": "mocha -w --require @babel/register"
+    "test:watch": "mocha -w --require @babel/register",
+    "prepack": "npx @openfn/simple-ast --adaptor ./lib/Adaptor.js --output ast.json"
   },
   "author": "Open Function Group",
   "license": "LGPLv3",
   "files": [
-    "lib/"
+    "lib/",
+    "ast.json"
   ],
+  "directories": {
+    "lib": "./lib"
+  },
   "dependencies": {
     "axios": "^0.21.1",
     "@openfn/language-common": "1.2.4"
@@ -31,5 +36,9 @@
     "mocha": "^7.1.1",
     "nock": "^12.0.3",
     "sinon": "^1.17.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OpenFn/adaptor.git"
   }
 }
