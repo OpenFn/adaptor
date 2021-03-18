@@ -1,6 +1,6 @@
 {
   "name": "language-template",
-  "version": "1.0.2-15",
+  "version": "1.0.2-16",
   "description": "An Language Package Template for OpenFn",
   "main": "lib/index.js",
   "scripts": {
