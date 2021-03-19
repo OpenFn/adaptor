@@ -35,3 +35,6 @@ tmp
 
 # Ignore build tarballs
 *.tgz
+
+# We don't use .npmignore
+.npmignore
