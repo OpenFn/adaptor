@@ -6,12 +6,14 @@
   "scripts": {
     "build": "make",
     "test": "mocha --require @babel/register",
-    "test:watch": "mocha -w --require @babel/register"
+    "test:watch": "mocha -w --require @babel/register",
+    "prepack": "npx @openfn/simple-ast --adaptor ./lib/Adaptor.js --output ast.json"
   },
   "author": "Open Function Group",
   "license": "LGPLv3",
   "files": [
-    "lib/"
+    "lib/",
+    "ast.json"
   ],
   "directories": {
     "lib": "./lib"
