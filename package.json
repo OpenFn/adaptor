@@ -1,5 +1,5 @@
 {
-  "name": "language-template",
+  "name": "@openfn/language-template",
   "version": "1.1.1",
   "description": "An Language Package Template for OpenFn",
   "main": "lib/index.js",
@@ -19,8 +19,8 @@
     "lib": "./lib"
   },
   "dependencies": {
-    "axios": "^0.21.1",
-    "@openfn/language-common": "1.2.4"
+    "@openfn/language-common": "1.2.4",
+    "axios": "^0.21.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.12.10",
@@ -40,5 +40,9 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/OpenFn/adaptor.git"
-  }
+  },
+  "bundledDependencies": [
+    "@openfn/language-common",
+    "axios"
+  ]
 }
