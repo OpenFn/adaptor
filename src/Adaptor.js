@@ -36,7 +36,7 @@ export function execute(...operations) {
 }
 
 /**
- * Creates some resource in a connected system
+ * Creates a resource in a destination system
  * @public
  * @example
  * create("/endpoint", {"foo": "bar"})
