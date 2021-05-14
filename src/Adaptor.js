@@ -17,7 +17,7 @@ exports.axios = axios;
  *   create('foo'),
  *   delete('bar')
  * )(state)
- * @constructor
+ * @function
  * @param {Operations} operations - Operations to be performed.
  * @returns {Operation}
  */
@@ -40,7 +40,7 @@ export function execute(...operations) {
  * @public
  * @example
  * create("/endpoint", {"foo": "bar"})
- * @constructor
+ * @function
  * @param {string} path - Path to resource
  * @param {object} params - data to create the new resource
  * @param {function} callback - (Optional) callback function
@@ -79,7 +79,7 @@ export function create(path, params, callback) {
  * @public
  * @example
  * createPatient({"foo": "bar"})
- * @constructor
+ * @function
  * @param {object} params - data to create the new resource
  * @param {function} callback - (Optional) callback function
  * @returns {Operation}
