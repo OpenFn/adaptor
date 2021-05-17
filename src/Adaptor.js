@@ -75,7 +75,7 @@ export function create(path, params, callback) {
 }
 
 /**
- * Creates some resource in a connected system to a known endpoint
+ * Create a patient in a fictional destination system
  * @public
  * @example
  * createPatient({"foo": "bar"})

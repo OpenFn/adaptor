@@ -70,7 +70,7 @@
         "callback"
       ],
       "docs": {
-        "description": "Creates some resource in a connected system to a known endpoint",
+        "description": "Create a patient in a fictional destination system",
         "tags": [
           {
             "title": "public",
