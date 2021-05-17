@@ -70,7 +70,7 @@
         "callback"
       ],
       "docs": {
-        "description": "Create a patient in a fictional destination system",
+        "description": "Create a patient in a fictional destination system with a REST api",
         "tags": [
           {
             "title": "public",
