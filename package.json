@@ -8,7 +8,7 @@
     "test": "mocha --require @babel/register",
     "test:watch": "mocha -w --require @babel/register",
     "prepack": "npm run ast",
-    "ast": "simple-ast --adaptor ./lib/Adaptor.js --output ast.json"
+    "ast": "simple-ast --adaptor ./src/Adaptor.js --output ast.json"
   },
   "author": "Open Function Group",
   "license": "LGPLv3",
