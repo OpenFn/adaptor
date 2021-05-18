@@ -75,7 +75,7 @@ export function create(path, params, callback) {
 }
 
 /**
- * Create a fictional patient in a fictional universe with a fictional REST api.
+ * Create a fictional patient in a fictional universe with a fictional REST api
  * @public
  * @example
  * createPatient({"foo": "bar"})
