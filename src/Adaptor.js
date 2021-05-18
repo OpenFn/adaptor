@@ -36,7 +36,7 @@ export function execute(...operations) {
 }
 
 /**
- * Creates a resource in a destination system with a POST request
+ * Creates a resource in a destination system using a POST request
  * @public
  * @example
  * create("/endpoint", {"foo": "bar"})
