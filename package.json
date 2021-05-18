@@ -4,10 +4,9 @@
   "description": "An Language Package Template for OpenFn",
   "main": "lib/index.js",
   "scripts": {
-    "build": "make && npm run ast",
+    "build": "make && yarn ast",
     "test": "mocha --require @babel/register",
     "test:watch": "mocha -w --require @babel/register",
-    "prepack": "npm run ast",
     "ast": "simple-ast --adaptor ./src/Adaptor.js --output ast.json",
     "postversion": "git push --tags && yarn publish . --tag $npm_package_version && git push && echo \"Successfully released version $npm_package_version!\""
   },
