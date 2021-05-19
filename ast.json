@@ -8,7 +8,7 @@
         "callback"
       ],
       "docs": {
-        "description": "Creates a resource in a destination system using a POST request",
+        "description": "Creates a resource in a fictional destination system using a POST request",
         "tags": [
           {
             "title": "public",
