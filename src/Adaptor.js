@@ -36,7 +36,7 @@ export function execute(...operations) {
 }
 
 /**
- * Creates a resource in a fictional destination system using a POST request
+ * Creates a fictional resource in a fictional destination system using a POST request
  * @public
  * @example
  * create("/endpoint", {"foo": "bar"})
@@ -75,7 +75,7 @@ export function create(path, params, callback) {
 }
 
 /**
- * Create a fictional patient in a fictional universe with a fictional REST api.
+ * Create a fictional patient in a fictional universe with a fictional REST api
  * @public
  * @example
  * createPatient({"foo": "bar"})
